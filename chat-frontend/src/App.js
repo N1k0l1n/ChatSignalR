@@ -60,8 +60,7 @@ const App = () => {
       {!connection ? (
         <Lobby joinRoom={joinRoom} />
       ) : (
-        <Chat messages={messages} sendMessage={sendMessage} 
-              closeConnection={closeConnection}/>
+        <Chat sendMessage={sendMessage} messages={messages} closeConnection={closeConnection} />
       )}
     </div>
   );
