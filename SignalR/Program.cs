@@ -5,6 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 //Adding SignalR
 builder.Services.AddSignalR();
 
+
+
 //CORS
 builder.Services.AddCors(options =>
 {
