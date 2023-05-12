@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const MessageContainer = ({ messages }) => {
+    const messageRef = useRef();
+
+    //Display the last message in the chat
+    useEffect(() => {
+        if (messageRef && messageRef.current) {
+            const { scrollHeight, clientHeight } = messageRef.current;
+            messageRef.current.scrollTo({ left: 0, top: scrollHeight - clientHeight, behavior: 'smooth' });
+        }
+    }, [messages]);
+
+
   return (
-    <div className="message-container">
-      {messages.map((m, index) => (
-        <div key={index} className="user-message">
-          <div className="message bg-primary">{m.message}</div>
-          <div className="from-user">{m.user}</div>
+    <div ref={messageRef} className='message-container' >
+    {messages.map((m, index) =>
+        <div key={index} className='user-message'>
+            <div className='message bg-primary'>{m.message}</div>
+            <div className='from-user'>{m.user}</div>
         </div>
-      ))}
-    </div>
+    )}
+</div>
+
   );
 };
 
