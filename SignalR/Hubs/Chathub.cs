@@ -22,6 +22,8 @@ namespace ChatService.Hubs
                 _connections.Remove(Context.ConnectionId);
                 Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has left");
 
+                SendConnectedUsers(userConnection.Room);
+
             }
 
             return base.OnDisconnectedAsync(exception);
@@ -46,6 +48,17 @@ namespace ChatService.Hubs
 
             //Sending Message from Boot
             await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has joined {userConnection.Room}");
+
+            await SendConnectedUsers(userConnection.Room);
+        }
+
+        //Return Number of Users on Room
+        public Task SendConnectedUsers(string room) 
+        {
+            var users = _connections.Values
+                                    .Where(c => c.Room == room)
+                                    .Select(c => c.User);
+            return Clients.Group(room).SendAsync("UsersInRoom", users);
         }
     }
 }
