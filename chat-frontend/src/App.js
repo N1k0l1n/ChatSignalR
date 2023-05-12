@@ -26,6 +26,8 @@ const App = () => {
       setConnection(connection);
     } catch (e) {
       console.log(e);
+
+      
     }
   };
 
