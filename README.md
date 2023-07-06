@@ -125,8 +125,7 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See [LICENSE](https://github.com/N1k0l1n/ChatRoom SignalR/blob/main/LICENSE.md) for more information.
 
 ## Authors
-
-* **Shaan Khan** - *Comp Sci Student* - [Shaan Khan](https://github.com/ShaanCoding/) - *Built ReadME Template*
+Nikolin ANDONI 
 
 ## Acknowledgements
 
